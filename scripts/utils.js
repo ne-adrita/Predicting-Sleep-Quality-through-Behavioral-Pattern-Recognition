@@ -1,13 +1,9 @@
-const app = document.getElementById("app");
-
-function renderPage(html) {
-  app.innerHTML = html;
-}
-
-function showAlert(message, isError = false) {
-  alert(message);
-}
-
-function getRandomScore() {
-  return Math.floor(Math.random() * 100);
-}
+function renderThankYou() {
+    renderPage(`
+      <div class="card">
+        <h2>Thank You!</h2>
+        <p>We appreciate you using Naptagram.</p>
+        <button onclick="renderLogout()">Logout</button>
+      </div>
+    `);
+  }

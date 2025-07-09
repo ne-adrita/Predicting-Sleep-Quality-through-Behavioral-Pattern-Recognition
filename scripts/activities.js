@@ -1,6 +1,6 @@
 function renderActivityForm() {
     renderPage(`
-      <form class="dashboard-form" onsubmit="handleActivitySubmit(event)">
+      <form onsubmit="submitActivity(event)">
         <h2>Log Activity</h2>
         <input type="text" id="activity_id" placeholder="Activity ID" required>
         <input type="text" id="activity_user_id" placeholder="User ID" required>
@@ -15,12 +15,13 @@ function renderActivityForm() {
         </select>
         <input type="number" id="activity_duration" placeholder="Duration (minutes)" required>
         <button type="submit">Submit</button>
+        <button onclick="renderDailyCheckIn()">Back: Daily Check-In</button>
       </form>
     `);
   }
   
-  function handleActivitySubmit(e) {
+  function submitActivity(e) {
     e.preventDefault();
-    showAlert("Activity submitted");
+    alert("Activity submitted");
     renderSleepSession();
   }
