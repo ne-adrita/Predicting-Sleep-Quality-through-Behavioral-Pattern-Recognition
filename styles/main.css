@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(120deg, #fbc2eb, #a6c1ee);
+  text-align: center;
+  padding: 30px;
+}
+
+.app-name {
+  font-family: 'Pacifico', cursive;
+  font-size: 40px;
+  color: #3f3f3f;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: #fff;
+  padding: 30px 20px;
+  margin: auto;
+  max-width: 350px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+button {
+  background: linear-gradient(to right, #f953c6, #b91d73);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
+  width: 90%;
+  margin: 10px auto;
+  display: block;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+p.clickable {
+  cursor: pointer;
+  color: blue;
+}
