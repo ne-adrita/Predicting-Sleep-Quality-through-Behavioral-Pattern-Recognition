@@ -97,12 +97,11 @@ function renderRegister() {
     alert("Login successful");
     renderDailyCheckIn(); // Changed from renderCaffeineIntake()
   }
-  
+
   function renderLogout() {
     renderPage(`
       <div class="card">
         <h2>You have been logged out.</h2>
-        <button onclick="renderLogin()">Login Again</button>
       </div>
     `);
   }

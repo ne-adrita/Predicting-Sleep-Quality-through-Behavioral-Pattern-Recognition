@@ -7,7 +7,7 @@ function renderSleepSession() {
         <input type="date" id="sleep_date" required><br>
         <input type="number" id="sleep_duration" placeholder="Duration (hours)" required><br>
         <button type="submit">Submit Sleep</button>
-        <button onclick="ActivityForm()">Back: Log Activity</button>
+        <button onclick="renderActivityForm()">Back: Log Activity</button>
       </form>
     `);
   }

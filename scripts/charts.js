@@ -92,7 +92,7 @@ function renderScore() {
       </div>
       <div class="card" style="margin-top: 20px;">
         <button onclick="renderThankYou()">Next</button>
-        <button onclick="ActivityFormrender()">Back: Log Activity</button>
+        <button onclick="renderScore()">Back: Score</button>
       </div>
     `);
   }
