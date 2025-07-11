@@ -1,7 +1,7 @@
 function renderDailyCheckIn() {
     renderPage(`
       <form onsubmit="submitCheckIn(event)">
-        <h2>🌤️ Daily Wellness Check-In</h2>
+        <h2> Daily Wellness Check-In</h2>
   
         <input type="number" id="caffeine" placeholder="☕ Caffeine Intake (mg: 1–100)" min="1" max="100" required>
         <p><small>📉 1–40: Low | ⚖️ 41–80: Moderate | 🚀 81–100: High</small></p>
