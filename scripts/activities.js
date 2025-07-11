@@ -1,3 +1,4 @@
+// In activities.js - modify the renderActivityForm function
 function renderActivityForm() {
     renderPage(`
       <form onsubmit="submitActivity(event)">
@@ -15,7 +16,7 @@ function renderActivityForm() {
         </select>
         <input type="number" id="activity_duration" placeholder="Duration (minutes)" required>
         <button type="submit">Submit</button>
-        <button onclick="renderDailyCheckIn()">Back: Daily Check-In</button>
+        <button onclick="renderMoodCheck()">Back: Mood Check</button>
       </form>
     `);
   }
