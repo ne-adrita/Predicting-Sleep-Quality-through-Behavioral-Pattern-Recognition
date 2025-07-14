@@ -26,3 +26,5 @@ function renderActivityForm() {
     alert("Activity submitted");
     renderSleepSession();
   }
+
+  // Line added for test
