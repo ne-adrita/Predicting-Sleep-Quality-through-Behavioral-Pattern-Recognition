@@ -1,4 +1,3 @@
-// Page 1: Caffeine Level
 function renderCaffeineCheck() {
     renderPage(`
       <div class="card" style="padding: 20px;">
@@ -63,7 +62,7 @@ function renderCaffeineCheck() {
     `);
   }
   
-  // Page 3: Productivity Level
+  
   function renderProductivityCheck() {
     renderPage(`
       <div class="card" style="padding: 20px;">
