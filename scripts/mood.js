@@ -44,10 +44,11 @@ function renderMoodStressCheck() {
         </p>
         
         <button style="margin-top: 30px;" onclick="submitMoodCheck()">Complete Check-In</button>
+         <button onclick="renderCaffeineCheck()">Back: Caffeine Check</button>
       </div>
     `);
     
-    // Initialize all labels
+    
     updateMoodLabel();
     updateStressLabel();
     updateProductivityLabel();
