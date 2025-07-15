@@ -12,7 +12,6 @@ function renderRegister() {
           <option value="Female">Female</option>
           <option value="Others">Others</option>
         </select><br>
-        <input type="number" id="reg_caffeine" placeholder="Caffeine Intake (mg)" min="1" max="100" required><br>
         <input type="password" id="reg_pass" placeholder="Password" required><br>
         <button type="submit">Register</button>
         <p onclick="renderLogin()">Already have an account? Login</p>

@@ -1,7 +1,7 @@
 function renderCaffeineCheck() {
     renderPage(`
       <div class="card" style="padding: 20px;">
-        <h2>Caffeine Intake</h2>
+        <h2>Daily Check-In</h2>
         
         <!-- Caffeine Level -->
         <h3 style="margin-top: 30px;">Caffeine Level</h3>
@@ -28,9 +28,7 @@ function updateCaffeineLabel() {
 function renderMoodStressCheck() {
     renderPage(`
       <div class="card" style="padding: 20px;">
-        <div style="text-align: left; margin-bottom: 20px;">
-          <span style="cursor:pointer; color:#007AFF;" onclick="renderCaffeineCheck()">← Back</span>
-        </div>
+        
         
         <h2>Mood & Stress Check</h2>
         
@@ -67,7 +65,6 @@ function renderMoodStressCheck() {
           <span style="font-size: 14px; color: #666;">High</span>
         </div>
         <p style="font-size: 12px; color: #666; text-align: center;">
-          (1-4 = Poor | 5-7 = Average | 8-10 = High)
         </p>
         <button style="margin-top: 30px;" onclick="submitrenderActivityForm()">Next</button>
         <button onclick="renderCaffeineCheck()">Back: Caffein Intake</button>

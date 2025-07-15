@@ -1,9 +1,7 @@
 function renderMoodStressCheck() {
     renderPage(`
       <div class="card" style="padding: 20px;">
-        <div style="text-align: left; margin-bottom: 20px;">
-          <span style="cursor:pointer; color:#007AFF;" onclick="renderCaffeineCheck()">← Back</span>
-        </div>
+      
         
         <h2>Mood & Stress Check</h2>
         
