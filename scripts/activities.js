@@ -16,7 +16,7 @@ function renderActivityForm() {
         </select>
         <input type="number" id="activity_duration" placeholder="Duration (minutes)" required>
         <button type="submit">Submit</button>
-        <button onclick="renderMoodStressCheck()">Back: Mood & StressCheck</button>
+        <button onclick="renderMoodStressCheck()">Back: Mood & Stress Check</button>
       </form>
     `);
   }

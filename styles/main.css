@@ -9,7 +9,7 @@ body {
 
 .app-name {
   font-family: 'Pacifico', cursive;
-  font-size: 40px;
+  font-size: 50px;
   color: #3f3f3f;
   margin-bottom: 20px;
 }
@@ -63,7 +63,7 @@ h2 {
 
 p {
   cursor: pointer;
-  color: blue;
+  color: rgb(9, 9, 243);
 }
 
 /* Mood Check Specific Styles */
