@@ -87,7 +87,7 @@ p {
     color: #666;
   }
   
-  /* Add to main.css */
+ /* Profile Icon Styles */
 .profile-icon {
   position: fixed;
   top: 20px;
@@ -119,4 +119,25 @@ p {
   background-color: #ff3b30;
   border-radius: 50%;
   border: 2px solid white;
+}
+
+/* Profile Page Styles */
+.profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profile-section {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+
+.activity-item, .mood-item, .sleep-item {
+  padding: 10px;
+  margin: 10px 0;
+  background: white;
+  border-radius: 5px;
 }

@@ -1,55 +1,79 @@
 // scripts/profile.js
-let hasUnreadNotifications = false;
-
 function renderProfileIcon(showBadge = false) {
-  const existingIcon = document.querySelector('.profile-icon');
-  if (existingIcon) {
-    existingIcon.remove();
-  }
+    // Remove existing icon if any
+    const existingIcon = document.querySelector('.profile-icon');
+    if (existingIcon) {
+        existingIcon.remove();
+    }
 
-  const profileIcon = document.createElement('div');
-  profileIcon.className = 'profile-icon';
-  profileIcon.innerHTML = `
-    <img src="https://i.pinimg.com/736x/03/05/79/030579b9189f00609a42e93a0fd1bf6e.jpg" alt="Profile">
-    ${showBadge ? '<span class="notification-badge"></span>' : ''}
-  `;
-  profileIcon.onclick = renderUserProfile;
-  document.body.appendChild(profileIcon);
-}
+    // Create new icon
+    const profileIcon = document.createElement('div');
+    profileIcon.className = 'profile-icon';
+    profileIcon.innerHTML = `
+        <img src="https://via.placeholder.com/30" alt="Profile">
+        ${showBadge ? '<span class="notification-badge"></span>' : ''}
+    `;
+    
+    // Add click handler
+    profileIcon.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent event bubbling
+        renderUserProfile();
+    });
 
-function checkForNewNotifications() {
-
-  const lastViewed = localStorage.getItem('lastProfileView') || 0;
-  const hasNewData = ['moodChecks', 'activities', 'sleepSessions'].some(key => {
-    const items = JSON.parse(localStorage.getItem(key)) || [];
-    return items.some(item => new Date(item.date || item.timestamp).getTime() > lastViewed);
-  });
-  
-  hasUnreadNotifications = hasNewData;
-  renderProfileIcon(hasUnreadNotifications);
+    document.body.appendChild(profileIcon);
 }
 
 function renderUserProfile() {
-  // Mark notifications as read
-  localStorage.setItem('lastProfileView', Date.now());
-  hasUnreadNotifications = false;
-  renderProfileIcon(false);
+    // Clear notifications
+    localStorage.setItem('lastProfileView', Date.now());
+    renderProfileIcon(false); // Update icon without badge
 
-  // Get user data from localStorage or use mock data
-  const userData = {
-    name: localStorage.getItem('username') || "User",
-    age: localStorage.getItem('age') || "",
-    gender: localStorage.getItem('gender') || "",
-    joinDate: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
-  };
+    // Get user data
+    const username = localStorage.getItem('username') || 'User';
+    const activities = JSON.parse(localStorage.getItem('activities')) || [];
+    const moodChecks = JSON.parse(localStorage.getItem('moodChecks')) || [];
+    const sleepSessions = JSON.parse(localStorage.getItem('sleepSessions')) || [];
 
-  const activities = JSON.parse(localStorage.getItem('activities')) || [];
-  const moodChecks = JSON.parse(localStorage.getItem('moodChecks')) || [];
-  const sleepSessions = JSON.parse(localStorage.getItem('sleepSessions')) || [];
+    // Render profile page
+    renderPage(`
+        <div class="profile-container">
+            <h2>${username}'s Profile</h2>
+            
+            <div class="profile-section">
+                <h3>Recent Activities</h3>
+                ${activities.slice(-3).reverse().map(activity => `
+                    <div class="activity-item">
+                        <p>${activity.type} - ${activity.duration} mins</p>
+                        <small>${new Date(activity.date).toLocaleDateString()}</small>
+                    </div>
+                `).join('') || '<p>No activities yet</p>'}
+            </div>
+
+            <div class="profile-section">
+                <h3>Recent Mood Checks</h3>
+                ${moodChecks.slice(-3).reverse().map(mood => `
+                    <div class="mood-item">
+                        <p>Mood: ${mood.mood}/10, Stress: ${mood.stress}/10</p>
+                        <small>${new Date(mood.date).toLocaleDateString()}</small>
+                    </div>
+                `).join('') || '<p>No mood checks yet</p>'}
+            </div>
+
+            <div class="profile-section">
+                <h3>Recent Sleep Sessions</h3>
+                ${sleepSessions.slice(-3).reverse().map(sleep => `
+                    <div class="sleep-item">
+                        <p>${sleep.duration} hours on ${sleep.date || new Date(sleep.timestamp).toLocaleDateString()}</p>
+                    </div>
+                `).join('') || '<p>No sleep sessions yet</p>'}
+            </div>
+
+            <button onclick="renderActivityForm()">Back to App</button>
+        </div>
+    `);
 }
 
-
+// Call this when new data is added
 function notifyNewActivity() {
-  hasUnreadNotifications = true;
-  renderProfileIcon(true);
+    renderProfileIcon(true); // Show with badge
 }
