@@ -29,3 +29,21 @@ function renderSleepSession() {
       </div>
     `);
   }
+
+  function submitSleep(e) {
+    e.preventDefault();
+    const duration = document.getElementById("sleep_duration").value;
+    const date = document.getElementById("sleep_date").value;
+    
+    const sleepSessions = JSON.parse(localStorage.getItem('sleepSessions')) || [];
+    sleepSessions.push({
+        duration,
+        date,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('sleepSessions', JSON.stringify(sleepSessions));
+    
+    notifyNewActivity(); // Add this line
+    alert("Sleep session recorded");
+    renderPattern();
+}

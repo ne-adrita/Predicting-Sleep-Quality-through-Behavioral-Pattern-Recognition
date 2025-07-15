@@ -26,5 +26,21 @@ function renderActivityForm() {
     alert("Activity submitted");
     renderSleepSession();
   }
-
-  // Line added for test
+  
+  function submitActivity(e) {
+    e.preventDefault();
+    const type = document.getElementById("activity_type").value;
+    const duration = document.getElementById("activity_duration").value;
+    
+    const activities = JSON.parse(localStorage.getItem('activities')) || [];
+    activities.push({
+        type,
+        duration,
+        date: new Date().toISOString()
+    });
+    localStorage.setItem('activities', JSON.stringify(activities));
+    
+    notifyNewActivity(); // Add this line
+    alert("Activity submitted");
+    renderSleepSession();
+}

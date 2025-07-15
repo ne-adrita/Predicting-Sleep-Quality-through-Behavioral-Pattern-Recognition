@@ -38,7 +38,6 @@ function renderMoodStressCheck() {
           <span style="font-size: 14px; color: #666;">High</span>
         </div>
         <p style="font-size: 12px; color: #666; text-align: center;">
-          (1-4 = Poor | 5-7 = Average | 8-10 = High)
         </p>
         
         <button style="margin-top: 30px;" onclick="submitMoodCheck()">Complete Check-In</button>
@@ -52,14 +51,32 @@ function renderMoodStressCheck() {
     updateProductivityLabel();
 }
 
-function submitMoodCheck() {
-    const mood = document.getElementById("moodSlider").value;
-    const stress = document.getElementById("stressSlider").value;
-    const productivity = document.getElementById("productivitySlider").value;
+// (function submitMoodCheck() {
+   // const mood = document.getElementById("moodSlider").value;
+    //const stress = document.getElementById("stressSlider").value;
+    //const productivity = document.getElementById("productivitySlider").value;
     
-    console.log(`Check-in complete:
-    - Mood: ${mood}/10
-    - Stress: ${stress}/10
-    - Productivity: ${productivity}/10`);
+   // console.log(`Check-in complete:
+  //  - Mood: ${mood}/10
+   // - Stress: ${stress}/10
+  //  - Productivity: ${productivity}/10`);
     
-    renderActivityForm(); }
+ //   renderActivityForm(); }
+
+ function submitMoodCheck() {
+  const mood = document.getElementById("moodSlider").value;
+  const stress = document.getElementById("stressSlider").value;
+  const productivity = document.getElementById("productivitySlider").value;
+  
+  const moodChecks = JSON.parse(localStorage.getItem('moodChecks')) || [];
+  moodChecks.push({
+      mood,
+      stress,
+      productivity,
+      date: new Date().toISOString()
+  });
+  localStorage.setItem('moodChecks', JSON.stringify(moodChecks));
+  
+  notifyNewActivity(); 
+  renderActivityForm();
+}

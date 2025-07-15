@@ -104,3 +104,16 @@ function renderRegister() {
       </div>
     `);
   }
+
+  // In auth.js - fix the duplicate login function
+function login(e) {
+  e.preventDefault();
+  const username = document.getElementById("login_user").value;
+  
+  // Store user data
+  localStorage.setItem('username', username);
+  
+  alert("Login successful");
+  renderProfileIcon(); // Add profile icon
+  renderCaffeineCheck(); // Start the check-in flow
+}
