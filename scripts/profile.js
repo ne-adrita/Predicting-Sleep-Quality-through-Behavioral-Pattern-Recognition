@@ -1,26 +1,52 @@
-// scripts/profile.js
 function renderProfileIcon(showBadge = false) {
     // Remove existing icon if any
-    const existingIcon = document.querySelector('.profile-icon');
+    const existingIcon = document.querySelector('.profile-icon-container');
     if (existingIcon) {
         existingIcon.remove();
     }
 
-    // Create new icon
+    // Create container
+    const profileContainer = document.createElement('div');
+    profileContainer.className = 'profile-icon-container';
+    
+    // Create clickable icon
     const profileIcon = document.createElement('div');
     profileIcon.className = 'profile-icon';
     profileIcon.innerHTML = `
-        <img src="https://i.pinimg.com/736x/03/05/79/030579b9189f00609a42e93a0fd1bf6e.jpg" alt="Profile">
-        ${showBadge ? '<span class="notification-badge"></span>' : ''}
+        <div class="profile-avatar">
+            <img src="https://i.pinimg.com/736x/03/05/79/030579b9189f00609a42e93a0fd1bf6e.jpg" alt="Profile">
+            ${showBadge ? '<span class="notification-badge"></span>' : ''}
+        </div>
     `;
     
-    // Add click handler
+    // Create dropdown menu
+    const dropdownMenu = document.createElement('div');
+    dropdownMenu.className = 'profile-dropdown';
+    dropdownMenu.style.display = 'none'; // Start hidden
+    dropdownMenu.innerHTML = `
+        <div class="dropdown-item" onclick="renderUserProfile()">
+            <i class="fas fa-user"></i> View Profile
+        </div>
+        <div class="dropdown-item" onclick="renderLogout()">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </div>
+    `;
+
+    // Toggle dropdown on icon click
     profileIcon.addEventListener('click', function(e) {
-        e.stopPropagation(); // Prevent event bubbling
-        renderUserProfile();
+        e.stopPropagation();
+        const isVisible = dropdownMenu.style.display === 'block';
+        dropdownMenu.style.display = isVisible ? 'none' : 'block';
     });
 
-    document.body.appendChild(profileIcon);
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function() {
+        dropdownMenu.style.display = 'none';
+    });
+
+    profileContainer.appendChild(profileIcon);
+    profileContainer.appendChild(dropdownMenu);
+    document.body.appendChild(profileContainer);
 }
 
 function renderUserProfile() {

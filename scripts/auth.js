@@ -107,11 +107,24 @@ function renderRegister() {
 
 
   function renderLogout() {
-    // Clear any existing profile icon
-    const existingIcon = document.querySelector('.profile-icon');
+    // Clear user data from localStorage
+    localStorage.removeItem('username');
+    localStorage.removeItem('age');
+    localStorage.removeItem('gender');
+    
+    // Remove profile icon
+    const existingIcon = document.querySelector('.profile-icon-container');
     if (existingIcon) {
         existingIcon.remove();
     }
+    
+    renderPage(`
+      <div class="card">
+        <h2>You have been logged out.</h2>
+        <button onclick="renderLogin()">Back to Login Page</button>
+      </div>
+    `);
+}
     
     function togglePassword(inputId) {
       const passwordInput = document.getElementById(inputId);
@@ -128,4 +141,18 @@ function renderRegister() {
         <button onclick="renderLogin()">Back to Login Page</button>
       </div>
     `);
-}
+    
+    function renderLogout() {
+      // Clear any existing profile icon
+      const existingIcon = document.querySelector('.profile-icon-container');
+      if (existingIcon) {
+          existingIcon.remove();
+      }
+      
+      renderPage(`
+        <div class="card">
+          <h2>You have been logged out.</h2>
+          <button onclick="renderLogin()">Back to Login Page</button>
+        </div>
+      `);
+  }
