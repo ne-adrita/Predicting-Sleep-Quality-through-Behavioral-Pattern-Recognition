@@ -25,7 +25,10 @@ function renderRegister() {
       <h2>Login</h2>
       <form onsubmit="login(event)">
         <input type="text" id="login_user" placeholder="User ID" required><br>
-        <input type="password" id="login_pass" placeholder="Password" required><br>
+       <div class="password-container">
+  <input type="password" id="reg_pass" placeholder="Password" required>
+  <span class="toggle-password" onclick="togglePassword('reg_pass')">[👀]</span>
+</div>
         <button type="submit">Login</button>
         <p onclick="renderForgotPassword()">Forgot Password?</p>
         <p onclick="renderRegister()">Don't have an account? Register</p>
@@ -97,6 +100,12 @@ function renderRegister() {
     renderDailyCheckIn(); // Changed from renderCaffeineIntake()
   }
 
+  function togglePassword(id) {
+    const input = document.getElementById(id);
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
+
+
   function renderLogout() {
     // Clear any existing profile icon
     const existingIcon = document.querySelector('.profile-icon');
@@ -104,6 +113,15 @@ function renderRegister() {
         existingIcon.remove();
     }
     
+    function togglePassword(inputId) {
+      const passwordInput = document.getElementById(inputId);
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+      } else {
+        passwordInput.type = "password";
+      }
+    }
+
     renderPage(`
       <div class="card">
         <h2>You have been logged out.</h2>
