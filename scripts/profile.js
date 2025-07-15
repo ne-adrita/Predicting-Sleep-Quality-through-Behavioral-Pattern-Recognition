@@ -10,7 +10,7 @@ function renderProfileIcon(showBadge = false) {
     const profileIcon = document.createElement('div');
     profileIcon.className = 'profile-icon';
     profileIcon.innerHTML = `
-        <img src="https://via.placeholder.com/30" alt="Profile">
+        <img src="https://i.pinimg.com/736x/03/05/79/030579b9189f00609a42e93a0fd1bf6e.jpg" alt="Profile">
         ${showBadge ? '<span class="notification-badge"></span>' : ''}
     `;
     
@@ -267,7 +267,7 @@ function renderUserProfile() {
             .productivity-9:after { width: 90%; background: #4CAF50; }
             .productivity-10:after { width: 100%; background: #4CAF50; }
             
-            .logout-btn {
+            .logout-btn, .back-to-app-btn {
                 background: linear-gradient(to right, #f953c6, #b91d73);
                 color: white;
                 border: none;
@@ -276,6 +276,13 @@ function renderUserProfile() {
                 margin-top: 10px;
                 cursor: pointer;
                 font-weight: bold;
+                margin-right: 10px;
+            }
+            
+            .button-container {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
             }
         </style>
         
@@ -287,7 +294,10 @@ function renderUserProfile() {
                     <h1>${userData.name}</h1>
                     <p>Age: ${userData.age} | Gender: ${userData.gender}</p>
                     <p>Member since ${userData.joinDate}</p>
-                    <button class="logout-btn" onclick="renderLogout()">Log Out</button>
+                    <div class="button-container">
+                        <button class="back-to-app-btn" onclick="renderCaffeineCheck()">Back to App</button>
+                        <button class="logout-btn" onclick="renderLogout()">Log Out</button>
+                    </div>
                 </div>
             </div>
 
@@ -420,7 +430,7 @@ function getQualityText(score) {
            score >= 40 ? 'Moderate' : 'Poor';
 }
 
-// Call this when new data is added
+
 function notifyNewActivity() {
     renderProfileIcon(true); // Show with badge
 }
