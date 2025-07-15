@@ -98,20 +98,16 @@ function renderRegister() {
   }
 
   function renderLogout() {
+    // Clear any existing profile icon
+    const existingIcon = document.querySelector('.profile-icon');
+    if (existingIcon) {
+        existingIcon.remove();
+    }
+    
     renderPage(`
       <div class="card">
         <h2>You have been logged out.</h2>
+        <button onclick="renderLogin()">Back to Login Page</button>
       </div>
     `);
-  }
-
-// In auth.js - modify the login function
-function login(e) {
-  e.preventDefault();
-  const username = document.getElementById("login_user").value;
-  localStorage.setItem('username', username);
-  
-  alert("Login successful");
-  renderProfileIcon(); // Add this line
-  renderCaffeineCheck();
 }

@@ -163,3 +163,28 @@ function login(e) {
     alert("Login successful");
     renderCaffeineCheck();
 }
+
+// In dailychk.js - modify the renderCaffeineCheck function
+function renderCaffeineCheck() {
+  renderPage(`
+    <div class="card" style="padding: 20px;">
+      <h2>Daily Check-In</h2>
+      
+      <!-- Caffeine Level -->
+      <h3 style="margin-top: 30px;">Caffeine Level</h3>
+      <div id="stressLabel" style="font-size: 24px; margin: 10px 0; font-weight: bold;">
+        <span id="stressNumber">5</span>/10 - <span id="stressText">Moderate</span>
+      </div>
+      <input type="range" min="1" max="10" value="5" class="slider" id="stressSlider" oninput="updateStressLabel()">
+      <div style="display: flex; justify-content: space-between; width: 90%; margin: 0 auto 20px;">
+        <span style="font-size: 14px; color: #666;">Very Low</span>
+        <span style="font-size: 14px; color: #666;">Very High</span>
+      </div>
+  
+      <button onclick="renderMoodStressCheck()">Next</button>
+    </div>
+  `);
+  
+  // Add profile icon
+  renderProfileIcon();
+}
