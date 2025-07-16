@@ -1,4 +1,4 @@
-function renderProfileIcon(showBadge = false) {
+function renderProfileIcon(showBadge = false, currentPage = '') {
     // Remove existing icon if any
     const existingIcon = document.querySelector('.profile-icon-container');
     if (existingIcon) {
@@ -9,37 +9,63 @@ function renderProfileIcon(showBadge = false) {
     const profileContainer = document.createElement('div');
     profileContainer.className = 'profile-icon-container';
     
-    // Create clickable icon
+    // Create clickable icon with page name
     const profileIcon = document.createElement('div');
     profileIcon.className = 'profile-icon';
     profileIcon.innerHTML = `
+        <div class="current-page">${currentPage}</div>
         <div class="profile-avatar">
             <img src="https://i.pinimg.com/736x/03/05/79/030579b9189f00609a42e93a0fd1bf6e.jpg" alt="Profile">
             ${showBadge ? '<span class="notification-badge"></span>' : ''}
         </div>
     `;
     
-    // Create dropdown menu
+    // Create dropdown menu with all navigation options
     const dropdownMenu = document.createElement('div');
     dropdownMenu.className = 'profile-dropdown';
-    dropdownMenu.style.display = 'none'; // Start hidden
+    dropdownMenu.style.display = 'none';
     dropdownMenu.innerHTML = `
+        <div class="dropdown-header">
+            <span>Navigation</span>
+        </div>
+        <div class="dropdown-item" onclick="renderCaffeineCheck()">
+            <i class="fas fa-coffee"></i> Daily Check-In
+        </div>
+        <div class="dropdown-item" onclick="renderMoodStressCheck()">
+            <i class="fas fa-smile"></i> Mood & Stress
+        </div>
+        <div class="dropdown-item" onclick="renderActivityForm()">
+            <i class="fas fa-running"></i> Activities
+        </div>
+        <div class="dropdown-item" onclick="renderSleepSession()">
+            <i class="fas fa-moon"></i> Sleep Session
+        </div>
+        </div>
+        <div class="dropdown-item" onclick="renderPattern()">
+            <i class="fas fa-chart-pie"></i> Behavioral Pattern
+        </div>
+        <div class="dropdown-item" onclick="renderScore()">
+            <i class="fas fa-chart-pie"></i> Sleep Quality
+        </div>
+        <div class="dropdown-item" onclick="renderRecommendation()">
+            <i class="fas fa-chart-pie"></i> Recommendation
+        </div>
+        <div class="dropdown-divider"></div>
         <div class="dropdown-item" onclick="renderUserProfile()">
-            <i class="fas fa-user"></i> View Profile
+            <i class="fas fa-user"></i> My Profile
         </div>
         <div class="dropdown-item" onclick="renderLogout()">
             <i class="fas fa-sign-out-alt"></i> Logout
         </div>
     `;
 
-    // Toggle dropdown on icon click
+    // Toggle dropdown
     profileIcon.addEventListener('click', function(e) {
         e.stopPropagation();
-        const isVisible = dropdownMenu.style.display === 'block';
-        dropdownMenu.style.display = isVisible ? 'none' : 'block';
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
     });
 
-    // Close dropdown when clicking outside
+    // Close when clicking outside
     document.addEventListener('click', function() {
         dropdownMenu.style.display = 'none';
     });
