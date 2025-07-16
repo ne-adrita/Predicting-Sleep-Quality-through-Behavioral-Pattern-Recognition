@@ -26,7 +26,7 @@ function renderProfileIcon(showBadge = false, currentPage = '') {
     dropdownMenu.style.display = 'none';
     dropdownMenu.innerHTML = `
         <div class="dropdown-header">
-            <span>Navigation</span>
+            <span>Sections</span>
         </div>
         <div class="dropdown-item" onclick="renderCaffeineCheck()">
             <i class="fas fa-coffee"></i> Daily Check-In
@@ -50,7 +50,11 @@ function renderProfileIcon(showBadge = false, currentPage = '') {
         <div class="dropdown-item" onclick="renderRecommendation()">
             <i class="fas fa-chart-pie"></i> Recommendation
         </div>
-        <div class="dropdown-divider"></div>
+        <div class="dropdown-header">
+             <span>Settings</span>
+        </div>
+       
+        <div class="dropdown-item"></div>
         <div class="dropdown-item" onclick="renderUserProfile()">
             <i class="fas fa-user"></i> My Profile
         </div>
