@@ -490,3 +490,102 @@ function getQualityText(score) {
 function notifyNewActivity() {
     renderProfileIcon(true); // Show with badge
 }
+
+function renderProfileIcon(showBadge = false, currentPage = '') {
+    // Remove existing icon if any
+    const existingIcon = document.querySelector('.profile-icon-container');
+    if (existingIcon) {
+        existingIcon.remove();
+    }
+
+    // Create container
+    const profileContainer = document.createElement('div');
+    profileContainer.className = 'profile-icon-container';
+    
+    // Create clickable icon with page name
+    const profileIcon = document.createElement('div');
+    profileIcon.className = 'profile-icon';
+    profileIcon.innerHTML = `
+        <div class="current-page">${currentPage}</div>
+        <div class="profile-avatar">
+            <img src="https://i.pinimg.com/736x/03/05/79/030579b9189f00609a42e93a0fd1bf6e.jpg" alt="Profile">
+            ${showBadge ? '<span class="notification-badge"></span>' : ''}
+        </div>
+    `;
+    
+    // Create dropdown menu with all navigation options
+    const dropdownMenu = document.createElement('div');
+    dropdownMenu.className = 'profile-dropdown';
+    dropdownMenu.style.display = 'none';
+    dropdownMenu.innerHTML = `
+        <div class="dropdown-header">
+            <span>Sections</span>
+        </div>
+        <div class="dropdown-item" onclick="renderCaffeineCheck()">
+            <i class="fas fa-coffee"></i> Daily Check-In
+        </div>
+        <div class="dropdown-item" onclick="renderMoodStressCheck()">
+            <i class="fas fa-smile"></i> Mood & Stress
+        </div>
+        <div class="dropdown-item" onclick="renderActivityForm()">
+            <i class="fas fa-running"></i> Activities
+        </div>
+        <div class="dropdown-item" onclick="renderSleepSession()">
+            <i class="fas fa-moon"></i> Sleep Session
+        </div>
+        <div class="dropdown-item" onclick="renderPattern()">
+            <i class="fas fa-chart-pie"></i> Behavioral Pattern
+        </div>
+        <div class="dropdown-item" onclick="renderScore()">
+            <i class="fas fa-chart-pie"></i> Sleep Quality
+        </div>
+        <div class="dropdown-item" onclick="renderRecommendation()">
+            <i class="fas fa-chart-pie"></i> Recommendation
+        </div>
+        <div class="dropdown-header">
+            <span>Settings</span>
+        </div>
+        <div class="dropdown-item" onclick="toggleDarkMode()">
+            <i class="fas fa-moon"></i> Dark Mode
+        </div>
+        <div class="dropdown-item" onclick="renderUserProfile()">
+            <i class="fas fa-user"></i> My Profile
+        </div>
+        <div class="dropdown-item" onclick="renderLogout()">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </div>
+    `;
+
+    // Toggle dropdown
+    profileIcon.addEventListener('click', function(e) {
+        e.stopPropagation();
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function() {
+        dropdownMenu.style.display = 'none';
+    });
+
+    profileContainer.appendChild(profileIcon);
+    profileContainer.appendChild(dropdownMenu);
+    document.body.appendChild(profileContainer);
+
+    // Apply dark mode if enabled
+    if (localStorage.getItem('darkMode') ){
+        document.body.classList.add('dark-mode');
+    }
+}
+
+// Add to your main.css or create a new CSS file
+function toggleDarkMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    
+    // Save preference to localStorage
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+    } else {
+        localStorage.removeItem('darkMode');
+    }
+}

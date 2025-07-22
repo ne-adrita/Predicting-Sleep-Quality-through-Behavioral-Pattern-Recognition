@@ -331,3 +331,158 @@ input[type="password"] {
   background: #f0f0f0;
   margin: 8px 0;
 }
+
+.dark-mode {
+  background: #121212 !important;
+  color: #ffffff !important;
+}
+
+.dark-mode .card,
+.dark-mode form {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+  border-color: #333 !important;
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode p,
+.dark-mode span,
+.dark-mode .dropdown-item,
+.dark-mode .dropdown-header {
+  color: #ffffff !important;
+}
+
+.dark-mode input,
+.dark-mode select {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+  border-color: #444 !important;
+}
+
+.dark-mode .profile-dropdown {
+  background-color: #1e1e1e !important;
+  border: 1px solid #333 !important;
+}
+
+.dark-mode .dropdown-item:hover {
+  background-color: #333 !important;
+}
+
+.dark-mode .dropdown-divider {
+  background-color: #333 !important;
+}
+
+/* Enhanced Dark Mode for Profile Page */
+.dark-mode .profile-container {
+  background-color: #0f172a !important; /* Dark blue-gray */
+  color: #e2e8f0 !important;
+}
+
+.dark-mode .profile-header {
+  background: linear-gradient(120deg, #120d13, #33343b) !important;
+}
+
+.dark-mode .profile-nav {
+  background-color: #1e293b !important;
+  border-bottom-color: #334155 !important;
+}
+
+.dark-mode .profile-section {
+  background-color: #1e293b !important;
+  border: 1px solid #334155 !important;
+}
+
+.dark-mode .post-card,
+.dark-mode .activity-item,
+.dark-mode .sleep-card,
+.dark-mode .mood-card {
+  background-color: #1e293b !important;
+  border: 1px solid #334155 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+.dark-mode .post-header,
+.dark-mode .activity-details,
+.dark-mode .sleep-stats,
+.dark-mode .mood-history {
+  color: #f8fafc !important;
+}
+
+.dark-mode .post-pic,
+.dark-mode .activity-icon {
+  background: linear-gradient(120deg, #aa78b2, #b63ab6) !important;
+}
+
+.dark-mode .sleep-meter {
+  background-color: #334155 !important;
+}
+
+.dark-mode .meter-fill {
+  background: linear-gradient(120deg, #7d65a5, #632e49) !important;
+}
+
+.dark-mode .button-container {
+  background-color: transparent !important;
+}
+
+.dark-mode .logout-btn,
+.dark-mode .back-to-app-btn {
+  background: linear-gradient(120deg, #b572a8, #7b2d60) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.dark-mode .nav-btn {
+  color: #cbd5e1 !important;
+  background-color: transparent !important;
+}
+
+.dark-mode .nav-btn.active {
+  color: #e6e7ec !important;
+  border-bottom-color: #c879d1 !important;
+}
+
+.dark-mode .profile-pic {
+  background: linear-gradient(120deg, #d6c5ce, #913e8c) !important;
+  border-color: #1e293b !important;
+}
+
+/* Improved Chart Styles for Dark Mode */
+.dark-mode #dailyChart,
+.dark-mode #weeklyChart {
+    background-color: #acb1ba !important;
+    border-radius: 50%;
+    padding: 10px;
+    border: 1px solid #909aa8 !important;
+}
+
+.dark-mode .card h2 {
+    color: #f4f4f7 !important; /* Light purple for headings */
+}
+
+.dark-mode .card p {
+    color: #e2e8f0 !important; /* Light gray for regular text */
+}
+
+.dark-mode .card strong {
+    color: #daeae4 !important; /* Teal for highlighted text (like "Excellent") */
+}
+
+.dark-mode .card button {
+    background: linear-gradient(to right, #9f4ba3, #d64de8) !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* Specific improvements for the percentage text */
+.dark-mode .card div[style*="font-size: 32px"] {
+    text-shadow: 0 0 8px rgba(150, 123, 196, 0.5); /* Purple glow effect */
+    color: #e3e8ec !important; /* Bright white */
+}
+
+/* Chart arcs visibility */
+.dark-mode .card canvas {
+    background-color: transparent !important;
+}
